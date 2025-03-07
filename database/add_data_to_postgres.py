@@ -2,11 +2,18 @@ from db_operations import insert_data
 import os
 import json
 
-from transformers import pipeline
+from textblob import TextBlob
 
 count = 0
 
-sentiment_analyzer = pipeline("sentiment-analysis")
+def get_sentiment(text):
+    score = TextBlob(text).sentiment.polarity
+    if score > 0:
+        return "Positive"
+    elif score < 0:
+        return "Negative"
+    else:
+        return "Neutral"
 
 with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file:
     try:
@@ -32,8 +39,8 @@ with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file
                     "review_date": j.get("publishTime", "Unknown Date"),
                     "original_review_content": j.get("originalText", {}).get("text", "No Review Content"),
                     "review_content_language": j.get("originalText", {}).get("languageCode", "Unknown"),
-                    "translated_review_content": j.get("text", {}).get("text", "No Translation"),
-                    "sentiment": sentiment_analyzer(j.get("text", {}).get("text", "Neutral")),
+                    "translated_review_content": j.get("text", {}).get("text", "No Review Content"),
+                    "sentiment": get_sentiment(j.get("text", {}).get("text", "Neutral"))
                 }
                 # print("**** : " + str(review))
                 insert_data("db1", "reviews", review)

@@ -24,7 +24,6 @@ regions = ["Tangier-Tetouan-Al Hoceima",
 regions_path = "./cities.json"
 
 with open(regions_path, 'r') as file:
-    # Step 2: Load the JSON data into a dictionary
     regions_dict = json.load(file)
 
 filtered_cities = list(set(city for region in regions_dict.values() for city in region))
@@ -62,7 +61,7 @@ for place in places:
         data["pageToken"] = next_page_token
 
     # Define the directory and filename
-    directory = "./data"
+    directory = "../../data/raw"
     filename = f"{place}-banks.json"
 
     # Create the directory if it doesn't exist

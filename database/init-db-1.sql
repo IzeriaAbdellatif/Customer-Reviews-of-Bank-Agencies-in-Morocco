@@ -4,8 +4,8 @@ create table banks
     name              text,
     branch            text,
     location          text,
-    rating            int,
-    user_rating_count int
+    rating            text,
+    user_rating_count text
 );
 
 create table reviews

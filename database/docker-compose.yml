@@ -11,6 +11,7 @@ services:
       - "${POSTGRES_PORT1}:5432"
     volumes:
       - postgres_db1_data:/var/lib/postgresql/data
+      - ./init-db-1.sql:/docker-entrypoint-initdb.d/init-db1.sql
     restart: always
 
   postgres_db2:

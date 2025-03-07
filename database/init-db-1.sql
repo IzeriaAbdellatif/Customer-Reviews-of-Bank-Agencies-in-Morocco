@@ -17,5 +17,6 @@ create table reviews
     review_date               text,
     original_review_content   text,
     review_content_language   text,
-    translated_review_content text
+    translated_review_content text,
+    sentiment                 text
 )

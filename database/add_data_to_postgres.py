@@ -2,7 +2,11 @@ from db_operations import insert_data
 import os
 import json
 
+from transformers import pipeline
+
 count = 0
+
+sentiment_analyzer = pipeline("sentiment-analysis")
 
 with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file:
     try:
@@ -29,6 +33,7 @@ with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file
                     "original_review_content": j.get("originalText", {}).get("text", "No Review Content"),
                     "review_content_language": j.get("originalText", {}).get("languageCode", "Unknown"),
                     "translated_review_content": j.get("text", {}).get("text", "No Translation"),
+                    "sentiment": sentiment_analyzer(j.get("text", {}).get("text", "Neutral")),
                 }
                 # print("**** : " + str(review))
                 insert_data("db1", "reviews", review)
@@ -36,20 +41,5 @@ with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file
             count = count + 1
     except json.JSONDecodeError as e:
         print(f"Error reading data-of-banks.json: {e}")
-        
-        
-from transformers import pipeline
-
-# Load a pretrained sentiment analysis model
-sentiment_analyzer = pipeline("sentiment-analysis")
-
-# Example comment
-comment = "I absolutely love this product! It's amazing."
-
-# Analyze sentiment
-result = sentiment_analyzer(comment)
-
-# Print the result
-print(result)
 
 print(count)

@@ -36,5 +36,20 @@ with open("../data/processed/data-of-banks.json", "r", encoding="utf-8") as file
             count = count + 1
     except json.JSONDecodeError as e:
         print(f"Error reading data-of-banks.json: {e}")
+        
+        
+from transformers import pipeline
+
+# Load a pretrained sentiment analysis model
+sentiment_analyzer = pipeline("sentiment-analysis")
+
+# Example comment
+comment = "I absolutely love this product! It's amazing."
+
+# Analyze sentiment
+result = sentiment_analyzer(comment)
+
+# Print the result
+print(result)
 
 print(count)

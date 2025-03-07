@@ -21,8 +21,18 @@ regions = ["Tangier-Tetouan-Al Hoceima",
            "Laâyoune-Sakia El Hamra",
            "Dakhla-Oued Ed-Dahab"]
 
+regions_path = "./cities.json"
 
-for region in regions:
+with open(regions_path, 'r') as file:
+    # Step 2: Load the JSON data into a dictionary
+    regions_dict = json.load(file)
+
+filtered_cities = list(set(city for region in regions_dict.values() for city in region))
+
+places = filtered_cities[:-3] + regions[-3:]
+
+
+for place in places:
 
     all_results = []
 
@@ -35,7 +45,7 @@ for region in regions:
     }
 
     data = {
-        "textQuery": f"bank near {region}, Morocco"
+        "textQuery": f"bank near {place}, Morocco"
     }
     while True:
         response = requests.post(url, json=data, headers=headers)
@@ -51,9 +61,9 @@ for region in regions:
 
         data["pageToken"] = next_page_token
 
-        # Define the directory and filename
+    # Define the directory and filename
     directory = "./data"
-    filename = f"{region}-banks.json"
+    filename = f"{place}-banks.json"
 
     # Create the directory if it doesn't exist
     os.makedirs(directory, exist_ok=True)
@@ -65,4 +75,4 @@ for region in regions:
     with open(file_path, "w", encoding="utf-8") as json_file:
         json.dump(all_results, json_file, ensure_ascii=False, indent=4)
 
-    print(f"JSON file for {region} saved at: {file_path}")
+    print(f"JSON file for {place} saved at: {file_path}")

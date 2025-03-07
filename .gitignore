@@ -216,3 +216,5 @@ fabric.properties
 
 .idea/.gitignore
 .idea/
+
+/data/raw

@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: db1
-    database: database_POSTGRES_DB_1
-    schema: myschema_1
-    tables:
-      - name: banks
-      - name: reviews

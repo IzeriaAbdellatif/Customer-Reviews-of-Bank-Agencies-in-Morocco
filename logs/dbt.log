@@ -1,0 +1,123 @@
+[0m18:38:02.807271 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b17d96a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b2839810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b0c24910>]}
+
+
+============================== 18:38:02.814913 | 665ad1c7-5621-4ae6-b76e-a7687f2204a5 ==============================
+[0m18:38:02.814913 [info ] [MainThread]: Running with dbt=1.9.3
+[0m18:38:02.816123 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': '/home/aizeria/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt init bank_reviews_dbt', 'send_anonymous_usage_stats': 'True'}
+[0m18:38:02.829041 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse logging event dictionary. Failed to parse dir field: expected string or bytes-like object, got 'PosixPath'.. Dictionary: {'dir': PosixPath('/home/aizeria/.dbt')}
+[0m18:38:02.830041 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m18:38:02.833469 [debug] [MainThread]: Starter project path: /home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/ScpPrjEnv/lib64/python3.13/site-packages/dbt/include/starter_project
+[0m18:38:02.840022 [info ] [MainThread]: 
+Your new dbt project "bank_reviews_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:38:02.842216 [info ] [MainThread]: Setting up your profile.
+[0m18:46:07.475942 [info ] [MainThread]: Profile bank_reviews_dbt written to /home/aizeria/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m18:46:07.481128 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 484.7345, "process_in_blocks": "3536", "process_kernel_time": 0.18008, "process_mem_max_rss": "95584", "process_out_blocks": "272", "process_user_time": 1.567387}
+[0m18:46:07.482095 [debug] [MainThread]: Command `dbt init` succeeded at 18:46:07.481886 after 484.74 seconds
+[0m18:46:07.482668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b0628d60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b0bd3530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe6b073a580>]}
+[0m18:46:07.483308 [debug] [MainThread]: Flushing usage events
+[0m18:46:08.495172 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:49:54.674840 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1980de56a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1981e3d810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1980238910>]}
+
+
+============================== 18:49:54.679254 | 354d8254-388b-4d76-b566-d60d7b38ed8a ==============================
+[0m18:49:54.679254 [info ] [MainThread]: Running with dbt=1.9.3
+[0m18:49:54.680179 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/aizeria/.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m18:49:54.692743 [info ] [MainThread]: dbt version: 1.9.3
+[0m18:49:54.693930 [info ] [MainThread]: python version: 3.13.2
+[0m18:49:54.696126 [info ] [MainThread]: python path: /home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/ScpPrjEnv/bin/python
+[0m18:49:54.698345 [info ] [MainThread]: os info: Linux-6.13.7-200.fc41.x86_64-x86_64-with-glibc2.40
+[0m18:49:54.803824 [info ] [MainThread]: Using profiles dir at /home/aizeria/.dbt
+[0m18:49:54.804593 [info ] [MainThread]: Using profiles.yml file at /home/aizeria/.dbt/profiles.yml
+[0m18:49:54.805257 [info ] [MainThread]: Using dbt_project.yml file at /home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/dbt_project.yml
+[0m18:49:54.806071 [info ] [MainThread]: adapter type: postgres
+[0m18:49:54.806723 [info ] [MainThread]: adapter version: 1.9.0
+[0m18:49:54.807419 [info ] [MainThread]: Configuration:
+[0m18:49:54.807975 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m18:49:54.808574 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m18:49:54.809201 [info ] [MainThread]: Required dependencies:
+[0m18:49:54.810123 [debug] [MainThread]: Executing "git --help"
+[0m18:49:54.813551 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:49:54.814717 [debug] [MainThread]: STDERR: "b''"
+[0m18:49:54.815586 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:49:54.816548 [info ] [MainThread]: Connection:
+[0m18:49:54.817475 [info ] [MainThread]:   host: localhost
+[0m18:49:54.818376 [info ] [MainThread]:   port: 5432
+[0m18:49:54.819222 [info ] [MainThread]:   user: aizeria
+[0m18:49:54.820062 [info ] [MainThread]:   database: bank_reviews
+[0m18:49:54.820926 [info ] [MainThread]:   schema: public
+[0m18:49:54.821838 [info ] [MainThread]:   connect_timeout: 10
+[0m18:49:54.822797 [info ] [MainThread]:   role: None
+[0m18:49:54.823816 [info ] [MainThread]:   search_path: None
+[0m18:49:54.824666 [info ] [MainThread]:   keepalives_idle: 0
+[0m18:49:54.825595 [info ] [MainThread]:   sslmode: None
+[0m18:49:54.826639 [info ] [MainThread]:   sslcert: None
+[0m18:49:54.827685 [info ] [MainThread]:   sslkey: None
+[0m18:49:54.828946 [info ] [MainThread]:   sslrootcert: None
+[0m18:49:54.829908 [info ] [MainThread]:   application_name: dbt
+[0m18:49:54.830973 [info ] [MainThread]:   retries: 1
+[0m18:49:54.832788 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m18:49:54.997654 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m18:49:55.054079 [debug] [MainThread]: Using postgres connection "debug"
+[0m18:49:55.054593 [debug] [MainThread]: On debug: select 1 as id
+[0m18:49:55.055052 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m18:49:55.069387 [debug] [MainThread]: SQL status: SELECT 1 in 0.014 seconds
+[0m18:49:55.070677 [debug] [MainThread]: On debug: Close
+[0m18:49:55.071302 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m18:49:55.072220 [info ] [MainThread]: [31m1 check failed:[0m
+[0m18:49:55.073310 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/dbt_project.yml> not found
+
+[0m18:49:55.075047 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.46040738, "process_in_blocks": "1680", "process_kernel_time": 0.263238, "process_mem_max_rss": "105240", "process_out_blocks": "64", "process_user_time": 1.754282}
+[0m18:49:55.075716 [debug] [MainThread]: Command `dbt debug` failed at 18:49:55.075529 after 0.46 seconds
+[0m18:49:55.076261 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m18:49:55.076845 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f197fc376f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f197f518950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f197fd43020>]}
+[0m18:49:55.077385 [debug] [MainThread]: Flushing usage events
+[0m18:49:56.028569 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:41:04.387740 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15e9155be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15ea1bda90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15e8594b90>]}
+
+
+============================== 08:41:04.393137 | ebf0c198-ff88-4930-b3fa-733d85e7247a ==============================
+[0m08:41:04.393137 [info ] [MainThread]: Running with dbt=1.9.3
+[0m08:41:04.394415 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/aizeria/.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt deps', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:41:04.395539 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m08:41:04.397230 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": false, "command_wall_clock_time": 0.07399966, "process_in_blocks": "48088", "process_kernel_time": 0.312386, "process_mem_max_rss": "91396", "process_out_blocks": "16", "process_user_time": 1.713759}
+[0m08:41:04.397901 [debug] [MainThread]: Command `dbt deps` failed at 08:41:04.397747 after 0.07 seconds
+[0m08:41:04.398461 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15e8075810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15e81860f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f15e82cb240>]}
+[0m08:41:04.399075 [debug] [MainThread]: Flushing usage events
+[0m08:41:05.329771 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:44:02.724665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d3407dbe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d35125a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d33498b90>]}
+
+
+============================== 08:44:02.728592 | 8639a98b-ba6d-4913-bd9a-978104aacf76 ==============================
+[0m08:44:02.728592 [info ] [MainThread]: Running with dbt=1.9.3
+[0m08:44:02.729622 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/home/aizeria/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt deps', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m08:44:02.730489 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/aizeria/Documents/Customer-Reviews-of-Bank-Agencies-in-Morocco/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m08:44:02.731833 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": false, "command_wall_clock_time": 0.06758216, "process_in_blocks": "640", "process_kernel_time": 0.150067, "process_mem_max_rss": "91552", "process_out_blocks": "8", "process_user_time": 1.523564}
+[0m08:44:02.732473 [debug] [MainThread]: Command `dbt deps` failed at 08:44:02.732278 after 0.07 seconds
+[0m08:44:02.733066 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d32f65810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d3307a0f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9d331c3240>]}
+[0m08:44:02.733637 [debug] [MainThread]: Flushing usage events
+[0m08:44:04.120913 [debug] [MainThread]: An error was encountered while trying to flush usage events

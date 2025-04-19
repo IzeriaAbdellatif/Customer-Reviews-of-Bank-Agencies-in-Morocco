@@ -1,21 +1,144 @@
-
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: fact_reviews
+    description: "Fact table containing bank branch reviews with customer sentiment and topics"
     columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
+      - name: review_id
+        description: "Unique identifier for each review"
+        tests:
           - unique
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+      - name: branch_id
+        description: "Foreign key to bank branch"
+        tests:
+          - not_null
+
+      - name: branch_name
+        description: "Name of the bank branch"
+        tests:
+          - not_null
+
+      - name: primary_type
+        description: "Type of bank branch"
+
+      - name: region
+        description: "Region where branch is located"
+        tests:
+          - not_null
+
+      - name: branch_rating
+        description: "Overall rating of the branch"
+        tests:
+          - not_null
+
+      - name: user_rating_count
+        description: "Total number of ratings for the branch"
+
+      - name: person_id
+        description: "Reviewer identifier"
+        tests:
+          - not_null
+
+      - name: review_time
+        description: "Timestamp of the review"
+        tests:
+          - not_null
+
+      - name: review_text
+        description: "The actual review content"
+
+      - name: review_rating
+        description: "Individual review rating"
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+
+      - name: topic
+        description: "Main topic of the review"
+        tests:
+          - accepted_values:
+              values: 
+                - "billing"
+                - "customer service"
+                - "security"
+                - "ATM issues"
+                - "wait times"
+                - "staff behavior"
+                - "mobile banking"
+                - "account management"
+                - "loans"
+                - "other"
+
+      - name: sentiment
+        description: "Sentiment analysis result"
+        tests:
+          - accepted_values:
+              values: ["positive", "negative", "neutral"]
+
+      - name: review_year
+        description: "Year of the review"
+        tests:
+          - not_null
+
+      - name: review_month
+        description: "Month of the review (1-12)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+      - name: review_day_of_week
+        description: "Day of week (0-6, Sunday=0)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3, 4, 5, 6]
+
+      - name: satisfaction_level
+        description: "Categorized satisfaction level"
+        tests:
+          - accepted_values:
+              values: ["High", "Medium", "Low"]
+
+      - name: review_sequence_per_user
+        description: "Sequential number of reviews per user"
+        tests:
+          - not_null
+
+  - name: dim_bank
+    description: "Bank dimension table with satisfaction metrics"
     columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
+      - name: bank_name
+        description: "Name of the bank"
+        tests:
           - unique
           - not_null
+      - name: branch_count
+        description: "Number of branches"
+      - name: average_rating
+        description: "Average rating across all branches"
+      - name: overall_satisfaction_pct
+        description: "Overall satisfaction percentage"
+      - name: security_level
+        description: "Security satisfaction category"
+      - name: service_quality
+        description: "Service quality category"
+      - name: digital_maturity
+        description: "Digital banking maturity level"
+      - name: wait_time_category
+        description: "Wait time experience category"
+      - name: regional_performance
+        description: "JSON object containing satisfaction metrics per region"
+      - name: best_performing_region
+        description: "Region with highest satisfaction score"
+      - name: worst_performing_region
+        description: "Region with lowest satisfaction score"
+
+sources:
+  - name: unique_source
+    database: bank_reviews
+    schema: public
+    tables:
+      - name: fact_branches

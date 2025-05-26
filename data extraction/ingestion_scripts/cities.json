@@ -1,0 +1,95 @@
+{
+    "Tanger-Tetouan-Hoceima": [
+        "AL HOCEIMA",
+        "CHEFCHAOUEN",
+        "FNIDEQ",
+        "KSAR EL KEBIR",
+        "LARACHE",
+        "MARTIL",
+        "OUEZZANE",
+        "TANGER",
+        "TETOUAN"
+    ],
+    "Oriental": [
+        "AL AAROUI",
+        "BERKANE",
+        "GUERCIF",
+        "NADOR",
+        "OUJDA",
+        "TAOURIRT"
+    ],
+    "Fes-Meknes": [
+        "AZROU",
+        "EL HAJEB",
+        "FES",
+        "MEKNES",
+        "SEFROU",
+        "TAOUNATE",
+        "TAZA"
+    ],
+    "Rabat-Sale-Kenitra": [
+        "KENITRA",
+        "KHEMISSET",
+        "RABAT",
+        "SALE",
+        "SIDI KACEM",
+        "SIDI SLIMANE",
+        "SKHIRATE",
+        "TEMARA",
+        "TIFLET"
+    ],
+    "Beni Mellal-Khenifra": [
+        "AZILAL",
+        "BENI MELLAL",
+        "FQUIH BEN SALAH",
+        "KASBA TADLA",
+        "KHENIFRA",
+        "KHOURIBGA",
+        "OUED ZEM",
+        "SOUK SEBT OULED NEMMA"
+    ],
+    "Casablanca-Settat": [
+        "AZEMMOUR",
+        "BENSLIMANE",
+        "BERRECHID",
+        "BOUSKOURA",
+        "BOUZNIKA",
+        "CASABLANCA",
+        "DAR BOUAZZA",
+        "EL JADIDA",
+        "MOHAMMEDIA",
+        "SETTAT",
+        "SIDI BENNOUR",
+        "TIT MELLIL"
+    ],
+    "Marrakech-Safi": [
+        "BEN GUERIR",
+        "EL KELAA DES SRARHNA",
+        "ESSAOUIRA",
+        "MARRAKECH",
+        "SAFI"
+    ],
+    "Daraa-Tafilelt": [
+        "Daraa-Tafilelt"
+    ],
+    "Souss Massa": [
+        "AGADIR",
+        "AIT MELLOUL",
+        "BIOUGRA",
+        "DCHEIRA EL JIHADIA",
+        "INEZGANE",
+        "OULAD TEIMA",
+        "TAROUDANNT",
+        "TIZNIT"
+    ],
+    "Guelmim-Oued Noun": [
+        "GUELMIM",
+        "TAN TAN"
+    ],
+    "LAAYOUNE-SAKIA EL HAMRA ":[
+        "LAAYOUNE"
+    ],
+    "Dakhla-Oued Eddahab":[
+        "DAKHLA"
+    ]
+}

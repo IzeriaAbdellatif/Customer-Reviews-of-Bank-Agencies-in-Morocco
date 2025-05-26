@@ -1,0 +1,174 @@
+version: 2
+
+models:
+  - name: bank_reviews
+    description: "Fact table containing bank branch reviews with customer sentiment and topics"
+    columns:
+      - name: review_id
+        description: "Unique identifier for each review"
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Foreign key to bank branch"
+        tests:
+          - not_null
+
+      - name: address
+        description: "Full address of the bank branch"
+        tests:
+          - not_null
+
+      - name: branch_name
+        description: "Name of the bank branch"
+        tests:
+          - not_null
+
+      - name: primary_type
+        description: "Type of bank branch"
+
+      - name: region
+        description: "Region where branch is located"
+        tests:
+          - not_null
+
+      - name: branch_rating
+        description: "Overall rating of the branch"
+        tests:
+          - not_null
+
+      - name: user_rating_count
+        description: "Total number of ratings for the branch"
+
+      - name: person_id
+        description: "Reviewer identifier"
+        tests:
+          - not_null
+
+      - name: review_time
+        description: "Timestamp of the review"
+        tests:
+          - not_null
+
+      - name: review_text
+        description: "The actual review content"
+
+      - name: review_rating
+        description: "Individual review rating"
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+
+      - name: topic
+        description: "Main topic of the review"
+        tests:
+          - accepted_values:
+              values: 
+                - "security"
+                - "customer service"
+                - "staff behavior"
+                - "account management"
+                - "ATM issues"
+                - "mobile banking"
+                - "billing"
+                - "wait times"
+                - "loans"
+                - "other"
+
+      - name: sentiment
+        description: "Sentiment analysis result"
+        tests:
+          - accepted_values:
+              values: ["positive", "negative", "neutral"]
+
+      - name: review_year
+        description: "Year of the review"
+        tests:
+          - not_null
+
+      - name: review_month
+        description: "Month of the review (1-12)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+      - name: review_day_of_week
+        description: "Day of week (0-6, Sunday=0)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3, 4, 5, 6]
+
+      - name: satisfaction_level
+        description: "Categorized satisfaction level"
+        tests:
+          - accepted_values:
+              values: ["High", "Medium", "Low"]
+
+      - name: review_sequence_per_user
+        description: "Sequential number of reviews per user"
+        tests:
+          - not_null
+
+  - name: dim_branch
+    description: "Branch dimension table"
+    columns:
+      - name: branch_id
+        description: "Primary key for branch dimension"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_reviewer
+    description: "Reviewer dimension table"
+    columns:
+      - name: person_id
+        description: "Primary key for reviewer dimension"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: "Date dimension table"
+    columns:
+      - name: date_id
+        description: "Primary key for date dimension"
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_reviews_star
+    description: "Fact table for bank reviews in star schema"
+    columns:
+      - name: review_id
+        description: "Primary key for fact table"
+        tests:
+          - unique
+          - not_null
+      - name: branch_id
+        description: "Foreign key to dim_branch"
+        tests:
+          - relationships:
+              to: ref('dim_branch')
+              field: branch_id
+      - name: person_id
+        description: "Foreign key to dim_reviewer"
+        tests:
+          - relationships:
+              to: ref('dim_reviewer')
+              field: person_id
+      - name: date_id
+        description: "Foreign key to dim_date"
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+
+sources:
+  - name: unique_source
+    database: defaultdb
+    schema: public
+    tables:
+      - name: bank_branches

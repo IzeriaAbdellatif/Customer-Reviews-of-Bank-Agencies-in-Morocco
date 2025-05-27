@@ -1,12 +1,22 @@
 import requests
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 import json
 import time
 
-load_dotenv()
+# Get the project root directory
+PROJECT_ROOT = Path(__file__).parents[2]  # Go up 3 levels to reach project root
+ENV_PATH = PROJECT_ROOT / 'config/.env'
+print(f"Loading environment variables from: {ENV_PATH}")
 
-GOOGLE_MAP_API_KEY = os.getenv("GOOGLE_MAP_API_KEY")
+load_dotenv(ENV_PATH)
+
+# GOOGLE_MAP_API_KEY = os.getenv("GOOGLE_MAP_API_KEY")
+
+# this will not use the api, it is just for testing airflow
+GOOGLE_MAP_API_KEY = os.getenv("")
+
 
 regions = ["Tangier-Tetouan-Al Hoceima",
            "L'Oriental",
@@ -21,7 +31,7 @@ regions = ["Tangier-Tetouan-Al Hoceima",
            "Laâyoune-Sakia El Hamra",
            "Dakhla-Oued Ed-Dahab"]
 
-regions_path = "/home/aizeria/Documents/work/Customer-Reviews-of-Bank-Agencies-in-Morocco/data extraction/ingestion_scripts/cities.json"
+regions_path = PROJECT_ROOT / "data extraction/ingestion_scripts/cities.json"
 
 with open(regions_path, 'r') as file:
     regions_dict = json.load(file)
@@ -102,7 +112,7 @@ for place in places:
             data["pageToken"] = next_page_token
 
 # Save all results to a single JSON file
-output_file = "/home/aizeria/Documents/work/Customer-Reviews-of-Bank-Agencies-in-Morocco/data extraction/raw_json/data-of-banks.json"
+output_file = PROJECT_ROOT / "data extraction/raw_json/data-of-banks-2.json"
 
 # Create parent directories if they don't exist
 os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -115,7 +125,13 @@ print(f"All results saved to: {output_file}")
 print(f"Total places collected: {len(all_results)}")
 
 
-# Test API connection
+#Test API connection
+# headers = {
+# "Content-Type": "application/json",
+# "X-Goog-Api-Key": GOOGLE_MAP_API_KEY,
+# "X-Goog-FieldMask": "places.id,places.displayName,places.shortFormattedAddress,places.formattedAddress,places.types,places.primaryType,places.rating,places.userRatingCount,places.reviews,nextPageToken"
+# }
+# url = "https://places.googleapis.com/v1/places:searchText"
 # test_data = {
 #     "textQuery": "BMCI near Casablanca, Morocco"
 # }

@@ -2,6 +2,7 @@ import json
 import psycopg2
 from dotenv import load_dotenv
 import os
+from pathlib import Path
 from transformers import pipeline
 from typing import Optional
 import re
@@ -88,8 +89,12 @@ def get_topic(text: Optional[str]) -> str:
         print(f"Error in topic classification: {str(e)}")
         return None
 
-# Load environment variables
-load_dotenv()
+# Get the project root directory
+PROJECT_ROOT = Path(__file__).parents[1]  # Go up 3 levels to reach project root
+ENV_PATH = PROJECT_ROOT / 'config/.env'
+print(f"Loading environment variables from: {ENV_PATH}")
+
+load_dotenv(ENV_PATH)
 
 # Database connection parameters
 db_params = {
@@ -100,7 +105,7 @@ db_params = {
     'port': os.getenv('DB_PORT')
 }
 
-# Connect to PostgreSQL
+# Connect and create cursor
 try:
     conn = psycopg2.connect(**db_params)
     cursor = conn.cursor()
@@ -110,8 +115,8 @@ except Exception as e:
     exit(1)
 
 # Create the SQL table
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS bank_branches (
+create_table_query ='''
+CREATE TABLE IF NOT EXISTS new_bank_branches (
     id TEXT PRIMARY KEY,
     branch_name TEXT,
     primary_type TEXT,
@@ -151,10 +156,20 @@ CREATE TABLE IF NOT EXISTS bank_branches (
     review_5_sentiment TEXT,
     review_5_topic TEXT
 )
-''')
+'''
+# Create table
+try:
+    cursor.execute(create_table_query)
+    conn.commit()
+    print("Table created successfully")
+except Exception as e:
+    print(f"Error creating table: {str(e)}")
+    conn.rollback()
 
+# Path to the JSON file
+json_path = PROJECT_ROOT / 'data extraction/raw_json/data-of-banks-2.json'
 # Load the JSON data
-with open('/home/aizeria/Documents/work/Customer-Reviews-of-Bank-Agencies-in-Morocco/data extraction/raw_json/data-of-banks.json', 'r') as file:
+with open(json_path, 'r') as file:
     data = json.load(file)
 
 # Process the JSON data and insert into the database
@@ -192,10 +207,10 @@ for bank in data:
             sentiment_topic_data.extend([sentiment, topic])
 
         # First try to delete any existing record with the same ID
-        cursor.execute('DELETE FROM bank_branches WHERE id = %s', (id,))
+        cursor.execute('DELETE FROM new_bank_branches WHERE id = %s', (id,))
 
         cursor.execute('''
-        INSERT INTO bank_branches (id, branch_name, primary_type, bank_name, region, address, rating, user_rating_count,
+        INSERT INTO new_bank_branches (id, branch_name, primary_type, bank_name, region, address, rating, user_rating_count,
                                     review_1, rating_1, person_id_1, time_1,
                                     review_2, rating_2, person_id_2, time_2,
                                     review_3, rating_3, person_id_3, time_3,
@@ -206,7 +221,7 @@ for bank in data:
                                     review_3_sentiment, review_3_topic,
                                     review_4_sentiment, review_4_topic,
                                     review_5_sentiment, review_5_topic)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ''', (id, f"{display_name} {address}", primary_type, bank_name, region, full_address, rating, user_rating_count, *review_data, *sentiment_topic_data))
         
         conn.commit()
@@ -217,8 +232,7 @@ for bank in data:
         conn.rollback()
         continue
 
-# Commit the changes and close the connection
-conn.commit()
+# Close connections at the very end
 cursor.close()
 conn.close()
 print("Data successfully inserted into PostgreSQL database")

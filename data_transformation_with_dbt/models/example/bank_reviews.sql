@@ -15,7 +15,7 @@ WITH unnested_reviews AS (
         rating_1 as review_rating,
         review_1_topic as topic,
         review_1_sentiment as sentiment
-    FROM {{ source('unique_source','bank_branches') }}
+    FROM {{ source('unique_source','new_bank_branches') }}
     WHERE person_id_1 IS NOT NULL
 
     UNION ALL
@@ -36,7 +36,7 @@ WITH unnested_reviews AS (
         rating_2,
         review_2_topic,
         review_2_sentiment
-    FROM {{ source('unique_source','bank_branches') }}
+    FROM {{ source('unique_source','new_bank_branches') }}
     WHERE person_id_2 IS NOT NULL
 
     UNION ALL
@@ -57,7 +57,7 @@ WITH unnested_reviews AS (
         rating_3,
         review_3_topic,
         review_3_sentiment
-    FROM {{ source('unique_source','bank_branches') }}
+    FROM {{ source('unique_source','new_bank_branches') }}
     WHERE person_id_3 IS NOT NULL
 
     UNION ALL
@@ -78,7 +78,7 @@ WITH unnested_reviews AS (
         rating_4,
         review_4_topic,
         review_4_sentiment
-    FROM {{ source('unique_source','bank_branches') }}
+    FROM {{ source('unique_source','new_bank_branches') }}
     WHERE person_id_4 IS NOT NULL
 
     UNION ALL
@@ -99,7 +99,7 @@ WITH unnested_reviews AS (
         rating_5,
         review_5_topic,
         review_5_sentiment
-    FROM {{ source('unique_source','bank_branches') }}
+    FROM {{ source('unique_source','new_bank_branches') }}
     WHERE person_id_5 IS NOT NULL
 )
 

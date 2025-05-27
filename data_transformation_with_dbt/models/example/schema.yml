@@ -171,4 +171,4 @@ sources:
     database: defaultdb
     schema: public
     tables:
-      - name: bank_branches
+      - name: new_bank_branches

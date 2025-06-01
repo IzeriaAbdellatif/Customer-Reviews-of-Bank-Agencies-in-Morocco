@@ -36,84 +36,49 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env with your credentials
 ```
+---
 
-Installation and Initialization of Airflow
+## ⚙️ Airflow Installation and Initialization
 
-This guide explains how to install Apache Airflow and initialize it on Linux and Windows systems. It also describes the recommended organization for your DAGs files.
-1. Prerequisites
+This project uses Apache Airflow to orchestrate ETL tasks. Follow these steps to set up Airflow:
 
-    Python 3.7 or higher must be installed on your machine.
-    It is recommended to use a virtual environment (venv or conda).
+1. **Install Airflow**  
+   - It’s recommended to use a virtual environment.  
+   - Install with:
+     ```bash
+     pip install apache-airflow
+     ```
 
-2. Installing Airflow
-For Linux
-bash
+2. **Initialize Airflow**  
+   - Run the following command to initialize the Airflow metadata database:
+     ```bash
+     airflow db init
+     ```
 
-# Create and activate a virtual environment (optional but recommended)
-python3 -m venv venv
-source venv/bin/activate
+3. **Set Up DAGs Folder**  
+   - Create a new folder named `airflow` at your desired location.
+   - Inside `airflow`, create another folder named `Dags` (case-sensitive).
+   - Copy the contents of your repository’s `airflow` folder into the newly created `airflow/Dags` folder.
+   - Your Airflow DAGs should now be in:  
+     `airflow/Dags/`
 
-# Install Apache Airflow via pip
-pip install apache-airflow
+4. **Configure Airflow**  
+   - (Optional) Point Airflow to your new DAGs folder by setting the `dags_folder` variable in `airflow.cfg` or via the environment variable:
+     ```bash
+     export AIRFLOW__CORE__DAGS_FOLDER=$(pwd)/airflow/Dags
+     ```
 
-For Windows
-cmd
+5. **Start Airflow**  
+   - Start the Airflow webserver and scheduler in separate terminals:
+     ```bash
+     airflow webserver
+     airflow scheduler
+     ```
+   - Access the Airflow UI at [http://localhost:8080](http://localhost:8080).
 
-REM Create and activate a virtual environment (optional but recommended)
-python -m venv venv
-venv\Scripts\activate
+**Note:** Make sure all your DAG Python scripts are in `airflow/Dags` for Airflow to detect and manage them.
 
-REM Install Apache Airflow via pip
-pip install apache-airflow
-
-3. Initializing Airflow
-
-After installation, initialize Airflow's database:
-bash
-
-airflow db init
-
-4. Creating the dags Folder
-
-Airflow looks for workflow files (DAGs) in a folder called dags.
-
-    Create a folder named dags at the root of your project or in your preferred location:
-    bash
-
-mkdir dags
-
-Place your DAG Python files in this folder.
-
-    For example, put your Airflow scripts (my_dag.py, etc.) inside the dags folder.
-
-Configure Airflow to point to this folder (optional if you use the default structure):
-
-    Edit the airflow.cfg file (dags_folder variable) or set the environment variable:
-    bash
-
-        export AIRFLOW__CORE__DAGS_FOLDER=$(pwd)/dags
-
-5. Starting the Webserver and Scheduler
-
-In two separate terminals, run:
-bash
-
-# Start the webserver
-airflow webserver
-
-# Start the scheduler
-airflow scheduler
-
-Access the Airflow interface at http://localhost:8080.
-Summary
-
-    Install Airflow with pip in a virtual environment.
-    Initialize Airflow using airflow db init.
-    Create a dags folder to store your Airflow workflows.
-    Place your DAG files in that folder.
-    Start the webserver and scheduler to use Airflow.
-
-
+---
 
 ## 🛠️ Technology Stack
 
